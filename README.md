@@ -10,7 +10,7 @@ This is an initial place for us to get started on the Edgar project.
 
 
 ## Pipeline
-## Part 1 - Data Ingestions
+### Part 1 - Data Ingestions
 Module called edgar_downloader, consists of 2 functions:
 1. write_page(url, file_path)
     This will take in a URL and write the html to path specified
@@ -19,7 +19,7 @@ Module called edgar_downloader, consists of 2 functions:
     Convention: "<ticker>_10-k_<filing_date>.html"
 Follow with Unit tests
 
-## Part 2 - Data Preparation / Cleaning
+### Part 2 - Data Preparation / Cleaning
 Module called edgar_cleaner. The module should contain the following functions: 
 1.  clean_html_text(html_text)
 Takes in a html text string and removes tags and special characters. Returns result as a string.
@@ -29,14 +29,14 @@ and writes them into the destination folder as text files. Files downloaded shou
 naming convention: <ticker>_10-k_<filing_date>.txt.
 
 Follow with unit tests
-## Part 3a - Reference Data: S&P100 Data
+### Part 3a - Reference Data: S&P100 Data
 
 Module called ref_data. The module should contain the following functions: 
 - get_sp100()
 Returns a list of all tickers in the S&P100. Note that this can be a snapshot of the current 
 constituents of the S&P100 and does not need to be updated live.
 
-## Part 3B - Reference Data: Yahoo Finance 
+### Part 3B - Reference Data: Yahoo Finance 
 Update the ref_data module. The module should contain the following added function: 
 - get_yahoo_data(start_date, end_date, tickers)
 Downloads yahoo finance data and consolidates all data into one table. In addition, returns 
@@ -44,7 +44,7 @@ should be calculated for 1, 2, 3, 5 and 10 business day time horizons. For examp
 return is the return made if the stock was bought today and sold the next day. Returns a 
 dataframe.
 
-## Part 3C - Reference Data: Loughran-McDonald Sentiment Words
+### Part 3C - Reference Data: Loughran-McDonald Sentiment Words
 Update the ref_data module. The module should contain the following added function: 
 - get_sentiment_word_dict()
 Returns a dictionary containing the LM sentiment words. The keys for the dictionary are the 
@@ -52,12 +52,12 @@ sentiments, and the values will be a list of words associated with that particul
 example, get_sentiment_word_dict()[‘Negative’] will return a list of words associated with 
 negative sentiment.
 
-## Part 4 - Sentiment Word Counts
+### Part 4 - Sentiment Word Counts
 module called edgar_sentiment_wordcount. The module should contain the following 
 function: 
 - write_document_sentiments(input_folder, output_file)
 Takes all the clean text 10-k files in the input folder, counts the number of words in the 
 document belonging to a particular sentiment and outputs the results to the output file
-## Post-Pipeline
+### Post-Pipeline
 
 ## Part 5. Sentiment Analysis
