@@ -4,7 +4,7 @@
 
 ## Getting started
 
-This is an initial place for us to get started on the Edgar project
+This is an initial place for us to get started on the Edgar project.
 
 ## Step 1
 
