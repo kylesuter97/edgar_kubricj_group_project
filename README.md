@@ -19,7 +19,7 @@ Module called edgar_downloader, consists of 2 functions:
     Convention: "<ticker>_10-k_<filing_date>.html"
 Follow with Unit tests
 
-## Part 1 - Data Preparation / Cleaning
+## Part 2 - Data Preparation / Cleaning
 Module called edgar_cleaner. The module should contain the following functions: 
 1.  clean_html_text(html_text)
 Takes in a html text string and removes tags and special characters. Returns result as a string.
