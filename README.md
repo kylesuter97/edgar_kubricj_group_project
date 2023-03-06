@@ -59,7 +59,7 @@ function:
 Takes all the clean text 10-k files in the input folder, counts the number of words in the 
 document belonging to a particular sentiment and outputs the results to the output file
 
-#### Part 5. Sentiment Analysis
+#### Part 5 - Sentiment Analysis
 ### Post-Pipeline
 
 
