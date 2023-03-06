@@ -28,7 +28,7 @@ Takes all the html 10-k files in the input folder, cleans them using the clean_h
 and writes them into the destination folder as text files. Files downloaded should follow the 
 naming convention: <ticker>_10-k_<filing_date>.txt.
 
-Follow with units
+Follow with unit tests
 ## Part 3a - Reference Data: S&P100 Data
 
 Module called ref_data. The module should contain the following functions: 
