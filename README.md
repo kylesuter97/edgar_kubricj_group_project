@@ -32,13 +32,14 @@ naming convention: <ticker>_10-k_<filing_date>.txt.
 
 Follow with unit tests
 ### Part 3a - Reference Data: S&P100 Data
-(API requests)
+(Using API requests)
 Module called ref_data. The module should contain the following functions: 
 - get_sp100()
 Returns a list of all tickers in the S&P100. Note that this can be a snapshot of the current 
 constituents of the S&P100 and does not need to be updated live.
 
 ### Part 3B - Reference Data: Yahoo Finance 
+(Using yahoofinancials)
 Update the ref_data module. The module should contain the following added function: 
 - get_yahoo_data(start_date, end_date, tickers)
 Downloads yahoo finance data and consolidates all data into one table. In addition, returns 
@@ -47,6 +48,7 @@ return is the return made if the stock was bought today and sold the next day. R
 dataframe.
 
 ### Part 3C - Reference Data: Loughran-McDonald Sentiment Words
+(Using NLP pre-processing and )
 Update the ref_data module. The module should contain the following added function: 
 - get_sentiment_word_dict()
 Returns a dictionary containing the LM sentiment words. The keys for the dictionary are the 
@@ -55,6 +57,7 @@ example, get_sentiment_word_dict()[‘Negative’] will return a list of words a
 negative sentiment.
 
 ### Part 4 - Sentiment Word Counts
+(Using feature extraction?)
 module called edgar_sentiment_wordcount. The module should contain the following 
 function: 
 - write_document_sentiments(input_folder, output_file)
@@ -62,6 +65,7 @@ Takes all the clean text 10-k files in the input folder, counts the number of wo
 document belonging to a particular sentiment and outputs the results to the output file
 
 #### Part 5 - Sentiment Analysis
+(Using general NLP modelling?)
 ### Post-Pipeline
 
 
