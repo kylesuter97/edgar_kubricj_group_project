@@ -11,6 +11,7 @@ This is an initial place for us to get started on the Edgar project.
 
 ## Pipeline
 ### Part 1 - Data Ingestions
+(Using Selenium)
 Module called edgar_downloader, consists of 2 functions:
 1. write_page(url, file_path)
     This will take in a URL and write the html to path specified
@@ -20,6 +21,7 @@ Module called edgar_downloader, consists of 2 functions:
 Follow with Unit tests
 
 ### Part 2 - Data Preparation / Cleaning
+(Using BeautifulSoup)
 Module called edgar_cleaner. The module should contain the following functions: 
 1.  clean_html_text(html_text)
 Takes in a html text string and removes tags and special characters. Returns result as a string.
@@ -30,7 +32,7 @@ naming convention: <ticker>_10-k_<filing_date>.txt.
 
 Follow with unit tests
 ### Part 3a - Reference Data: S&P100 Data
-
+(API requests)
 Module called ref_data. The module should contain the following functions: 
 - get_sp100()
 Returns a list of all tickers in the S&P100. Note that this can be a snapshot of the current 
