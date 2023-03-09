@@ -1,10 +1,22 @@
+<<<<<<< .gitignore
 ignore/
-
-__pycache__/
 
 
 *.ipynb
 test.py
 draft.ipynb
 
+# Anything explicity ignored
+gitignored/
+
+#Jupyter stuff
+*.ipynb
+
+#Test file
+testing.py
+
+#Pycache
 __pycache__/
+
+edgar_downloader.cpython-310.pyc
+>>>>>>> .gitignore
