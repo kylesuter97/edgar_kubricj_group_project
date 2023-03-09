@@ -71,26 +71,30 @@ def write_documents_sentiment_wordcount(input_folder, output_file): #Main Functi
     #Main part of Code
     ###############################################################################################
 
+    # Import LM dictionary
+    # sentiment_dict = edgar_data.get_sentiment_word_dict
 
-    #Change directory to input folder
+    #Change directory to input folder (temporary)
     os.chdir(input_folder)
     temp_file_path = "C:\\NotOneDrive\\Edgar\\edgar-bps\\test_data.txt" # Nixon's LM dictionary..
     with open(temp_file_path, 'r', encoding='utf-8') as f:
         data = f.read()
         data = data.replace("'", '"')
-    lm_dict = json.loads(data)
+    sentiment_dict = json.loads(data)
+
+
 
     #Create lists for individual sentiments
-    positive_list = lm_dict['Positive']
-    negative_list = lm_dict['Negative']
-    uncertainty_list = lm_dict['Uncertainty']
-    litigious_list = lm_dict['Litigious']
-    constraining_list = lm_dict['Constraining']
-    # superfluous_list = lm_dict['Superfluous']
+    positive_list = sentiment_dict['Positive']
+    negative_list = sentiment_dict['Negative']
+    uncertainty_list = sentiment_dict['Uncertainty']
+    litigious_list = sentiment_dict['Litigious']
+    constraining_list = sentiment_dict['Constraining']
+    # superfluous_list = sentiment_dict['Superfluous']
     superfluous_list = ['redundant', 'unneeded']
-    # interesting_list = lm_dict['Interesting']
+    # interesting_list = sentiment_dict['Interesting']
     interesting_list = ['absorbing', 'engrossing']
-    # modal_list = lm_dict['Modal]
+    # modal_list = sentiment_dict['Modal]
     modal_list = []
     
     
@@ -120,6 +124,9 @@ def write_documents_sentiment_wordcount(input_folder, output_file): #Main Functi
                         "Modal": modal}
             #Append dictionary to LOD for dataframe
             lod.append(tempdict)
+
+            #Print out that 1 report appended
+            print(f"Extracted data from {file}")
     #Create dataframe of all html files sentiment counts
     df = pd.DataFrame(lod, columns=columnheaders)
 
