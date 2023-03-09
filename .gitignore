@@ -1,0 +1,5 @@
+*.ipynb
+test.py
+draft.ipynb
+
+__pycache__/
