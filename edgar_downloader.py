@@ -19,50 +19,20 @@ def write_page(url, file_path):
     #Link to html file
     xpath_ixbrl = r'//*[@id="formDiv"]/div/table/tbody/tr[2]/td[3]/a'
     driver.find_element("xpath", xpath_ixbrl).click()
+    time.sleep(4)
 
     #If HTML+CSS, proceed to "Open as HTML", otherwise assume already HTML
     try:
-        #]clicks on the menu button if present
-        #xpath_menu = r'//*[@id="menu-dropdown-link"]'
-        #driver.find_element("xpath", xpath_menu).click()
-        driver.find_element(By.ID, 'menu-dropdown-link').click()
+        #clicks on the menu button if present
+        xpath_menu = r'//*[@id="menu-dropdown-link"]/i'
+        driver.find_element("xpath", xpath_menu).click()
         #clicks Open as Html
-        try:
-            xpath_final = r'//*[@id="form-information-html"]'
-            driver.find_element("xpath", xpath_final).click()
-            driver.switch_to.window(driver.window_handles[1])
-        except Exception:
-            print("First open as xml xpath failed, trying second")
-            try:
-                xpath_final = r'//*[@id="menu-dropdown-link"]/span[1]"]'
-                driver.find_element("xpath", xpath_final).click()
-                driver.switch_to.window(driver.window_handles[1])
-            except Exception:
-                print(f"Second open as xml xpath failed, you need to check this date {xpath_filing_date}")
-                pass
+        xpath_final = r'//*[@id="form-information-html"]'
+        driver.find_element("xpath", xpath_final).click()
+        driver.switch_to.window(driver.window_handles[1])
     except Exception:
         pass
-        # try:
-        #     xpath_menu = r'//*[@id="menu-dropdown-link"]/span[1]"]'
-        #     driver.find_element("xpath", xpath_menu).click()
-
-        #     #clicks Open as Html
-        #     try:
-        #         xpath_final = r'//*[@id="form-information-html"]'
-        #         driver.find_element("xpath", xpath_final).click()
-        #         driver.switch_to.window(driver.window_handles[1])
-        #     except Exception:
-        #         print("First open as xml xpath failed, trying second")
-        #         try:
-        #             xpath_final = r'//*[@id="menu-dropdown-link"]/span[1]"]'
-        #             driver.find_element("xpath", xpath_final).click()
-        #             driver.switch_to.window(driver.window_handles[1])
-        #         except Exception:
-        #             print(f"Second open as xml xpath failed, you need to check this date {xpath_filing_date}")
-        #             pass
-        # except Exception:
-        #     pass
-    time.sleep(4)
+    time.sleep(3)
     #create output file path
     tempfile_name = "thistempfile.html"
 

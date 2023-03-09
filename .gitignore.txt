@@ -1,0 +1,8 @@
+# Anything explicity ignored
+gitignored
+
+#Jupyter stuff
+*.ipynb
+
+#Test file
+testing.py
