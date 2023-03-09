@@ -6,3 +6,8 @@ gitignored/
 
 #Test file
 testing.py
+
+#Pycache
+__pycache__/
+
+edgar_downloader.cpython-310.pyc
