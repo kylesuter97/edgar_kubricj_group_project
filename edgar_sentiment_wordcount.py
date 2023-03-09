@@ -27,22 +27,22 @@ def write_documents_sentiment_wordcount(input_folder, output_file): #Main Functi
 
         #Counts every time a sentiment value appears
         for i in token_list:
-            if i in positive_list:
+            if i in sentiment_dict["Positive"]:
                 positive += 1
-            elif i in negative_list:
+            elif i in sentiment_dict["Negative"]:
                 negative += 1
-            elif i in litigious_list:
+            elif i in sentiment_dict["Litigious"]:
                 litigious += 1
-            elif i in constraining_list:
+            elif i in sentiment_dict["Constraining"]:
                 constraining += 1
-            elif i in superfluous_list:
-                superfluous += 1
-            elif i in interesting_list:
-                interesting += 1
-            elif i in uncertainty_list:
+            #elif i in sentiment_dict["Superfluous"]:
+                #superfluous += 1
+            #elif i in sentiment_dict["Interesting"]:
+                #interesting += 1
+            elif i in sentiment_dict["Uncertainty"]:
                 uncertainty += 1
-            elif i in modal_list:
-                modal += 1
+            #elif i in sentiment_dict["Modal"]:
+                #modal += 1
         #returns all sentiment counts 
         return positive, negative, uncertainty, litigious, constraining, superfluous, interesting, modal
 
@@ -137,4 +137,4 @@ def write_documents_sentiment_wordcount(input_folder, output_file): #Main Functi
     df.to_csv(output_file)
 
 
-write_documents_sentiment_wordcount('C:\\NotOneDrive\\Edgar\\clean_html\\', 'C:\\NotOneDrive\\Edgar\\clean_html\outputfile.csv')gi
+write_documents_sentiment_wordcount('C:\\NotOneDrive\\Edgar\\clean_html\\', 'C:\\NotOneDrive\\Edgar\\clean_html\outputfile.csv')
