@@ -1,5 +1,5 @@
 # Anything explicity ignored
-gitignored
+gitignored/
 
 #Jupyter stuff
 *.ipynb
