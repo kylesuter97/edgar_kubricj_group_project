@@ -1,4 +1,3 @@
-<<<<<<< ref_data.py
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -30,7 +29,8 @@ def get_sp100():
             ticker_list.append(i[0])
 
     for index in range(len(ticker_list)):
-        ticker_list[index] = re.sub(r'[^A-Za-z0-9]', '', ticker_list[index].upper())
+        if '.' in ticker_list[index]:
+            ticker_list[index] = ticker_list[index].replace('.', '-')
 
     return ticker_list
 
@@ -38,12 +38,11 @@ def get_sp100():
 def get_yahoo_data(start_date: str,end_date: str,tickers: list=get_sp100(),time_period: str='daily'):
     prices_list=[]
     data = YahooFinancials(tickers).get_historical_price_data(start_date, end_date, time_period)
-
     for ticker in tickers:
         for item in data[ticker]['prices']:
             item['symbol']=ticker
         prices_list = prices_list + data[ticker]['prices']
-
+    
     df = pd.DataFrame(prices_list)
 
     df.drop(columns = ['open', 'close','date'], inplace = True)
@@ -62,5 +61,3 @@ def get_yahoo_data(start_date: str,end_date: str,tickers: list=get_sp100(),time_
     df=df[['date','high','low','price','volume','1daily_return','2daily_return','3daily_return','5daily_return','10daily_return','symbol']]
 
     return df
-
->>>>>>> ref_data.py
