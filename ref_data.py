@@ -1,9 +1,41 @@
+<<<<<<< ref_data.py
+import requests
+from bs4 import BeautifulSoup
+import re
 import yahoofinancials
 from yahoofinancials import YahooFinancials
 import pandas as pd
 import numpy as np
 
-def get_yahoo_data(start_date: str,end_date: str,tickers: list,time_period: str='daily'):
+
+def get_sp100():
+    
+    url = r'https://en.wikipedia.org/wiki/S%26P_100'
+    r = requests.get(url)
+
+    soup = BeautifulSoup(r.text, 'html.parser') 
+
+    tag = 'table'
+    attributes = {'id':'constituents'}    
+    table_soup = soup.find(tag, attributes)  
+
+    table_data = []
+    for row in table_soup.find_all('tr'):
+        row_text = [i.text.strip() for i in row.find_all('td')]
+        table_data.append(row_text)
+
+    ticker_list = []
+    for i in table_data:
+        if len(i) > 0:
+            ticker_list.append(i[0])
+
+    for index in range(len(ticker_list)):
+        ticker_list[index] = re.sub(r'[^A-Za-z0-9]', '', ticker_list[index].upper())
+
+    return ticker_list
+
+
+def get_yahoo_data(start_date: str,end_date: str,tickers: list=get_sp100(),time_period: str='daily'):
     prices_list=[]
     data = YahooFinancials(tickers).get_historical_price_data(start_date, end_date, time_period)
 
@@ -30,3 +62,5 @@ def get_yahoo_data(start_date: str,end_date: str,tickers: list,time_period: str=
     df=df[['date','high','low','price','volume','1daily_return','2daily_return','3daily_return','5daily_return','10daily_return','symbol']]
 
     return df
+
+>>>>>>> ref_data.py
