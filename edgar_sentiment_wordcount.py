@@ -4,6 +4,7 @@ import re
 import json
 from nltk import word_tokenize
 from nltk.corpus import stopwords
+#import ref_data as edgar_data
 
 def write_documents_sentiment_wordcount(input_folder, output_file): #Main Function
     def name_cleaner(filename): #Function for getting Symbol, ReportType, FilingDate
@@ -71,7 +72,6 @@ def write_documents_sentiment_wordcount(input_folder, output_file): #Main Functi
     #Main part of Code
     ###############################################################################################
 
-    # Import LM dictionary
     # sentiment_dict = edgar_data.get_sentiment_word_dict
 
     #Change directory to input folder (temporary)
