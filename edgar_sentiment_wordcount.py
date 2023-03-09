@@ -8,11 +8,11 @@ from nltk.corpus import stopwords
 
 def write_documents_sentiment_wordcount(input_folder, output_file): #Main Function
     def name_cleaner(filename): #Function for getting Symbol, ReportType, FilingDate
-        filenamelist = filename.split('_')
+        filenamelist = filename.split('_') #Split file name by _
         symbol = filenamelist[0]
         reporttype = filenamelist[1]
         filingdatetxt = filenamelist[2]
-        filingdate = filingdatetxt.split('.')[0]
+        filingdate = filingdatetxt.split('.')[0] #remove .txt from date
         return symbol, reporttype, filingdate
     
     def dict_creator(token_list): #Function for getting sentiment word counts per html 
@@ -42,7 +42,9 @@ def write_documents_sentiment_wordcount(input_folder, output_file): #Main Functi
                 #interesting += 1
             elif i in sentiment_dict["Uncertainty"]:
                 uncertainty += 1
-            #elif i in sentiment_dict["Modal"]:
+            #elif i in sentiment_dict["Strong Modal"]:
+                #modal += 1
+            #elif i in sentiment_dict["Weak Modal"]:
                 #modal += 1
         #returns all sentiment counts 
         return positive, negative, uncertainty, litigious, constraining, superfluous, interesting, modal
@@ -52,10 +54,10 @@ def write_documents_sentiment_wordcount(input_folder, output_file): #Main Functi
             output = f.read()
         output = output.upper() #Upper text to match LM dict
         output = re.sub(r'[^A-Za-z0-9]', ' ', output) #remove punctuation
-        unclean_token_list = word_tokenize(output)
-        token_list = []
+        unclean_token_list = word_tokenize(output) #Put all words in list
+        token_list = [] #Empty list to append to
         for word in unclean_token_list:
-            if word not in stopword_list:
+            if word not in stopword_list: #Appends word if not in stop_words
                 token_list.append(word)
             else:
                 pass
@@ -80,24 +82,7 @@ def write_documents_sentiment_wordcount(input_folder, output_file): #Main Functi
     with open(temp_file_path, 'r', encoding='utf-8') as f:
         data = f.read()
         data = data.replace("'", '"')
-    sentiment_dict = json.loads(data)
-
-
-
-    #Create lists for individual sentiments
-    positive_list = sentiment_dict['Positive']
-    negative_list = sentiment_dict['Negative']
-    uncertainty_list = sentiment_dict['Uncertainty']
-    litigious_list = sentiment_dict['Litigious']
-    constraining_list = sentiment_dict['Constraining']
-    # superfluous_list = sentiment_dict['Superfluous']
-    superfluous_list = ['redundant', 'unneeded']
-    # interesting_list = sentiment_dict['Interesting']
-    interesting_list = ['absorbing', 'engrossing']
-    # modal_list = sentiment_dict['Modal]
-    modal_list = []
-    
-    
+    sentiment_dict = json.loads(data) #loads file into dict
     
     #Create empty list of dicts for later dataframe
     lod = []# LOD to make datafram
