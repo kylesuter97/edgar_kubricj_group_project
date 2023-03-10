@@ -26,6 +26,8 @@ pip install requirements -r
 
 The pipeline as a whole can be run by running the 'Run_pipeline.py' file, changing the input and output folder locations. By default the pipeline will be run on the entire S&P100, however a list of individual tickers can also be entered.
 
+Running individual sections can also be done assuming the required data is present, this is detailed further in the pipeline section below.
+
 
 ## Pipeline
 ### Part 1 - Data Ingestions
