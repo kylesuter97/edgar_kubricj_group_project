@@ -101,7 +101,7 @@ def get_sentiment_word_dict():
     lm_df = lm_df.fillna(0)
     # Optional: Remove rows for non-essential columns    
     # lm_df = lm_df.drop(columns = ['Seq_num','Word Count','Word Proportion','Average Proportion','Std Dev','Doc Count','Syllables','Source'])
-    # Create the filters for each dictionary key    
+    # Create the filters for each dictionary key.  
     mask1 = lm_df['Positive'] > 0 
     mask2 = lm_df['Negative'] > 0
     mask3 = lm_df['Uncertainty'] > 0
