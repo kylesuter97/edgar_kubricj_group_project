@@ -42,9 +42,7 @@ def write_documents_sentiment_wordcount(input_folder, output_file): #Main Functi
                 #interesting += 1
             elif i in sentiment_dict["Uncertainty"]:
                 uncertainty += 1
-            #elif i in sentiment_dict["Strong Modal"]:
-                #modal += 1
-            #elif i in sentiment_dict["Weak Modal"]:
+            #elif i in sentiment_dict["Modal"]:
                 #modal += 1
         #returns all sentiment counts 
         return positive, negative, uncertainty, litigious, constraining, superfluous, interesting, modal

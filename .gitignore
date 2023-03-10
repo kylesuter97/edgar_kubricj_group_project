@@ -6,3 +6,6 @@ gitignored/
 
 #Test file
 testing.py
+
+#old main code
+edgar_sentiment_wordcount_obselete.py
