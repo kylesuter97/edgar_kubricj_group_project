@@ -18,4 +18,4 @@ def main(list_of_tickers, input_folder, output_folder, output_file):
 
 
 tickers = edgar_data.get_sp100()
-main(tickers), 'C:\\NotOneDrive\\Edgar\\test_dir\\input_files', 'C:\\NotOneDrive\\Edgar\\test_dir\\output_files', 'C:\\NotOneDrive\\Edgar\\test_dir\\output3m.csv')
+main(list_of_tickers=tickers), 'C:\\NotOneDrive\\Edgar\\test_dir\\input_files', 'C:\\NotOneDrive\\Edgar\\test_dir\\output_files', 'C:\\NotOneDrive\\Edgar\\test_dir\\output3m.csv')

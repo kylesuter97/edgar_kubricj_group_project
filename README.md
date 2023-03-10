@@ -1,12 +1,30 @@
 # Edgar-BPS
 
 
-
 ## Getting started
 
-This is an initial place for us to get started on the Edgar project.
+This is team  Battersea Power Station's submission for the Edgar project.
 
-## Pre-Pipeline
+This pipeline scrapes, cleans and analyzes S&P100 10-k submissions from the U.S. Securities and Exchange Commission's EDGAR Company filings.
+
+The pipeline is split into 4 sections:
+
+- Data Ingestion
+
+- Data Cleaning
+
+- Sentiment Word Counting
+
+- Sentiment Analysis
+
+## Installation
+Ensure correct packages are installed 
+```
+pip install requirements -r
+```
+## Usage
+
+The pipeline as a whole can be run by running the 'Run_pipeline.py' file, changing the input and output folder locations. By default the pipeline will be run on the entire S&P100, however a list of individual tickers can also be entered.
 
 
 ## Pipeline
