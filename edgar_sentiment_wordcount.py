@@ -4,7 +4,7 @@ import re
 import json
 from nltk import word_tokenize
 from nltk.corpus import stopwords
-#import ref_data as edgar_data
+import ref_data as edgar_data
 
 def write_documents_sentiment_wordcount(input_folder, output_file): #Main Function
     def name_cleaner(filename): #Function for getting Symbol, ReportType, FilingDate
@@ -74,17 +74,22 @@ def write_documents_sentiment_wordcount(input_folder, output_file): #Main Functi
 
     # sentiment_dict = edgar_data.get_sentiment_word_dict
 
-    #Change directory to input folder (temporary)
-    os.chdir(input_folder)
-    temp_file_path = "C:\\NotOneDrive\\Edgar\\edgar-bps\\test_data.txt" # Nixon's LM dictionary..
-    with open(temp_file_path, 'r', encoding='utf-8') as f:
-        data = f.read()
-        data = data.replace("'", '"')
-    sentiment_dict = json.loads(data) #loads file into dict
+
+    sentiment_dict = edgar_data.get_sentiment_word_dict()
+
+    #Old code pre-nixons code
+
+    # temp_file_path = "C:\\NotOneDrive\\Edgar\\edgar-bps\\test_data.txt" # Nixon's LM dictionary..
+    # with open(temp_file_path, 'r', encoding='utf-8') as f:
+    #     data = f.read()
+    #     data = data.replace("'", '"')
+    # sentiment_dict = json.loads(data) #loads file into dict
     
     #Create empty list of dicts for later dataframe
     lod = []# LOD to make datafram
 
+    #Change directory to input folder
+    os.chdir(input_folder)
     #iterate through every file in folder
     for file in os.listdir():
         #Check if file is a text file
