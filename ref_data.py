@@ -6,6 +6,8 @@ from yahoofinancials import YahooFinancials
 import pandas as pd
 import numpy as np
 import os
+import MOD_Load_MasterDictionary_v2022
+import requests
 
 
 def get_sp100():
@@ -69,9 +71,8 @@ def get_sentiment_word_dict():
     # Define the path of the file containing the sentiment word data
     # os.chdir(r"C:\\Users\\Nixon Ng\\OneDrive - Kubrick Group\\Desktop\\Kubrick Training Program\\Week 10 (Edgar)\\edgar_project\\edgar-bps")
     # filename = rf'../edgar-bps/lm_dict_1993-2021.csv'    
-    cwd = os.getcwd()
-    os.chdir(cwd)
-    filename = os.fsdecode('lm_dict_1993-2021.csv')
+    #os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    filename = 'lm_dict_1993-2021.csv'
     # Create the dictionary containing sentiments as dictionary keys, and list of sentiment words as dictionary values    
     sentiment_dict = {'Positive': [], 'Negative': [], 'Uncertainty': [], 'Litigious': [], 
                       'Strong Modal': [], 'Weak Modal': [], 'Constraining': [], 'Superfluous': [], 

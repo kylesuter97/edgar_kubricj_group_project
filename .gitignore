@@ -1,11 +1,3 @@
-<<<<<<< .gitignore
-ignore/
-
-
-*.ipynb
-test.py
-draft.ipynb
-
 # Anything explicity ignored
 gitignored/
 
@@ -14,9 +6,4 @@ gitignored/
 
 #Test file
 testing.py
-
-#Pycache
-__pycache__/
-
-edgar_downloader.cpython-310.pyc
->>>>>>> .gitignore
+edgar_sentiment_wordcount_obselete.py
