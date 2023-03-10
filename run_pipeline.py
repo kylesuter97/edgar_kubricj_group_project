@@ -4,7 +4,8 @@ import edgar_cleaner
 import edgar_sentiment_wordcount as edgar_wordcount
 import os
 
-def main(list_of_tickers, input_folder, output_folder, output_file):
+tickers = edgar_data.get_sp100()
+def main(list_of_tickers=tickers, input_folder, output_folder, output_file):
     repo_wd = os.getcwd()
     for i in list_of_tickers:
         edgar_downloader.download_files_10k(i, input_folder) #Downloads all html files to folder
@@ -16,6 +17,4 @@ def main(list_of_tickers, input_folder, output_folder, output_file):
     edgar_wordcount.write_documents_sentiment_wordcount(output_folder, output_file, sentiment_dict)
     os.chdir(repo_wd)
 
-
-tickers = edgar_data.get_sp100()
-main(list_of_tickers=tickers), 'C:\\NotOneDrive\\Edgar\\test_dir\\input_files', 'C:\\NotOneDrive\\Edgar\\test_dir\\output_files', 'C:\\NotOneDrive\\Edgar\\test_dir\\output3m.csv')
+main(tickers, 'C:\\NotOneDrive\\Edgar\\test_dir\\input_files', 'C:\\NotOneDrive\\Edgar\\test_dir\\output_files', 'C:\\NotOneDrive\\Edgar\\test_dir\\output3m.csv')
