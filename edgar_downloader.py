@@ -19,7 +19,7 @@ def write_page(url, file_path):
     #Link to html file
     xpath_ixbrl = r'//*[@id="formDiv"]/div/table/tbody/tr[2]/td[3]/a'
     driver.find_element("xpath", xpath_ixbrl).click()
-    time.sleep(4)
+    time.sleep(2)
 
     #If HTML+CSS, proceed to "Open as HTML", otherwise assume already HTML
     try:

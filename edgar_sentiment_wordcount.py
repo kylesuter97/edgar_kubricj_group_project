@@ -6,7 +6,7 @@ from nltk import word_tokenize
 from nltk.corpus import stopwords
 import ref_data as edgar_data
 
-def write_documents_sentiment_wordcount(input_folder, output_file): #Main Function
+def write_documents_sentiment_wordcount(input_folder, output_file, sentiment_dict): #Main Function
     def name_cleaner(filename): #Function for getting Symbol, ReportType, FilingDate
         filenamelist = filename.split('_') #Split file name by _
         symbol = filenamelist[0]
@@ -36,14 +36,14 @@ def write_documents_sentiment_wordcount(input_folder, output_file): #Main Functi
                 litigious += 1
             elif i in sentiment_dict["Constraining"]:
                 constraining += 1
-            #elif i in sentiment_dict["Superfluous"]:
-                #superfluous += 1
-            #elif i in sentiment_dict["Interesting"]:
-                #interesting += 1
+            elif i in sentiment_dict["Superfluous"]:
+                superfluous += 1
+            elif i in sentiment_dict["Interesting"]:
+                interesting += 1
             elif i in sentiment_dict["Uncertainty"]:
                 uncertainty += 1
-            #elif i in sentiment_dict["Modal"]:
-                #modal += 1
+            elif i in sentiment_dict["Modal"]:
+                modal += 1
         #returns all sentiment counts 
         return positive, negative, uncertainty, litigious, constraining, superfluous, interesting, modal
 
@@ -72,10 +72,7 @@ def write_documents_sentiment_wordcount(input_folder, output_file): #Main Functi
     #Main part of Code
     ###############################################################################################
 
-    # sentiment_dict = edgar_data.get_sentiment_word_dict
 
-
-    sentiment_dict = edgar_data.get_sentiment_word_dict()
 
     #Old code pre-nixons code
 
@@ -122,7 +119,6 @@ def write_documents_sentiment_wordcount(input_folder, output_file): #Main Functi
     print(df)
 
     #Output to required folder
+    os.chdir(input_folder)
     df.to_csv(output_file)
 
-
-write_documents_sentiment_wordcount('C:\\NotOneDrive\\Edgar\\clean_html\\', 'C:\\NotOneDrive\\Edgar\\clean_html\outputfile.csv')
