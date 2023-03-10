@@ -6,28 +6,3 @@ gitignored/
 
 #Test file
 testing.py
-<<<<<<< .gitignore
-ignore/
-
-
-*.ipynb
-test.py
-draft.ipynb
-
-# Anything explicity ignored
-gitignored/
-
-#Jupyter stuff
-*.ipynb
-
-#Test file
-testing.py
-
-#Pycache
-__pycache__/
-
-edgar_downloader.cpython-310.pyc
->>>>>>> .gitignore
-
-#old main code
-edgar_sentiment_wordcount_obselete.py
