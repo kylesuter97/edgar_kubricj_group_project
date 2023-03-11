@@ -36,4 +36,4 @@ def write_clean_html_text_files(input_folder, dest_folder):
 
         print(f'{filename} has been created.')
 
-        #
+        

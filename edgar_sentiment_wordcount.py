@@ -1,12 +1,11 @@
 import os
 import pandas as pd
 import re
-import json
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 import ref_data as edgar_data
 
-def write_documents_sentiment_wordcount(input_folder, output_file, sentiment_dict): #Main Function
+def write_documents_sentiments(input_folder, output_file, sentiment_dict): #Main Function
     def name_cleaner(filename): #Function for getting Symbol, ReportType, FilingDate
         filenamelist = filename.split('_') #Split file name by _
         symbol = filenamelist[0]
@@ -68,23 +67,10 @@ def write_documents_sentiment_wordcount(input_folder, output_file, sentiment_dic
     #Stopword list of words to ignore
     stopword_list = stopwords.words('english')
 
-    ###################################################################################################
-    #Main part of Code
-    ###############################################################################################
-
-
-
-    #Old code pre-nixons code
-
-    # temp_file_path = "C:\\NotOneDrive\\Edgar\\edgar-bps\\test_data.txt" # Nixon's LM dictionary..
-    # with open(temp_file_path, 'r', encoding='utf-8') as f:
-    #     data = f.read()
-    #     data = data.replace("'", '"')
-    # sentiment_dict = json.loads(data) #loads file into dict
-    
     #Create empty list of dicts for later dataframe
-    lod = []# LOD to make datafram
+    lod = []
 
+    sentiment_dict = edgar_data.get_sentiment_word_dict()
     #Change directory to input folder
     os.chdir(input_folder)
     #iterate through every file in folder
