@@ -1,12 +1,11 @@
 import os
 import pandas as pd
 import re
-import json
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 import ref_data as edgar_data
 
-def write_documents_sentiment_wordcount(input_folder, output_file, sentiment_dict): #Main Function
+def write_documents_sentiments(input_folder, output_file, sentiment_dict): #Main Function
     def name_cleaner(filename): #Function for getting Symbol, ReportType, FilingDate
         filenamelist = filename.split('_') #Split file name by _
         symbol = filenamelist[0]
@@ -71,6 +70,7 @@ def write_documents_sentiment_wordcount(input_folder, output_file, sentiment_dic
     #Create empty list of dicts for later dataframe
     lod = []
 
+    sentiment_dict = edgar_data.get_sentiment_word_dict()
     #Change directory to input folder
     os.chdir(input_folder)
     #iterate through every file in folder

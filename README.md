@@ -3,38 +3,40 @@
 
 ## Getting started
 
-This is team  Battersea Power Station's submission for the Edgar project.
+This repository has been developed as part of team Battersea Power Station's submission for the Edgar project.
 
 This pipeline scrapes, cleans and analyzes S&P100 10-k submissions from the U.S. Securities and Exchange Commission's EDGAR Company filings.
 
-The pipeline is split into 4 sections:
+The pipeline is split into 5 modules:
 
-- Data Ingestion
+- Data Ingestion - "edgar_downloader"
 
-- Data Cleaning
+- Data Cleaning - "edgar_cleaner"
 
-- Sentiment Word Counting
+- Reference Data Collecting - "ref_data"
+
+- Sentiment Word Counting - "edgar_sentiment_wordcount"
 
 - Sentiment Analysis
 
-## Installation
+### Installation
 Ensure correct packages are installed using the requirement.txt file as below
 ```
 pip install requirements.txt -r
 ```
-## Usage
+### Usage
 
-The pipeline as a whole can be run by running the 'run_pipeline.py' file, changing the input and output folder locations. By default the pipeline will be run on the entire S&P100, however a list of individual tickers can also be entered.
+The pipeline as a whole can be run by running the `run_pipeline.py` file, changing the input and output folder locations. By default the pipeline will be run on the entire S&P100, however a list of individual tickers can also be entered.
 
 Running individual sections can also be done provided the required data is present, this is detailed further in the pipeline section below.
 
 **IMPORTANT** : Throughout the pipeline when entering a path location, any uses of a `\` symbol must be replace with `\\` to ensure compatibility.
-e.g. `C:\Documents\testfolder\subfolder` must be replaced with `C:\\Documents\\testfolder\\subfolder`
+e.g. `'C:\Documents\testfolder\subfolder'` must be replaced with `'C:\\Documents\\testfolder\\subfolder'`
 
 
 
 ## Pipeline Modules:
-### Module 1: edgar_downloader
+### Data Ingestion: edgar_downloader
 ---
 
 The edgar_downloader module can be used to download all 10-k submissions for a given S&P100 company, in the form of raw .htm files.
@@ -51,50 +53,48 @@ Each file will be outputted with the naming convention:
 `<ticker>_10-k_<filingdate>.htm `
 
 
-### Module 2: edgar_cleaner
+### Data Cleaning: edgar_cleaner
 ---
-The edgar_cleaner module can be used to any 10-k submissions 
+The edgar_cleaner module can be used to clean any 10-k submissions in raw .htm format, removing any html tags, and outputting the clean text in .txt files.
 
+The code below can be used for example to clean a folder of .htm files
 
-### Module 3: ref_data
+```
+import edgar_cleaner
+edgar_cleaner.write_clean_html_text_files('C:\\Documents\\testfolder\\inputfolder', 'C:\\Documents\\testfolder\\outputfolder')
+```
+
+### Reference Data Collecting: ref_data
 ---
-(Using API requests)
-Module called ref_data. The module should contain the following functions: 
-- get_sp100()
-Returns a list of all tickers in the S&P100. Note that this can be a snapshot of the current 
-constituents of the S&P100 and does not need to be updated live.
+The ref_data module provides three functions that used in the pipeline:
+
+- **Part A - get_sp100()**
+The `get_sp100()` can be used to provide a list of the tickers of companies that are currently in the S&P100. The `run_pipeline.py` script will use this by default unless another list of ticker is provided instead.
+
+The code below for example will print the described list
+```
+import ref_data
+print(ref_data.get_sp100())
+```
+
+ - **Part B - get_yahoo_data()**
 
 
-### Part 3B - Reference Data: Yahoo Finance 
+
+- **Part C - get_sentiment_word_dict()**
+
+The `get_sentiment_word_dict()` function can be used 
+
+
+### Sentiment Word Counting: edgar_sentiment_wordcount
 ---
-(Using yahoofinancials)
-Update the ref_data module. The module should contain the following added function: 
-- get_yahoo_data(start_date, end_date, tickers)
-Downloads yahoo finance data and consolidates all data into one table. In addition, returns 
-should be calculated for 1, 2, 3, 5 and 10 business day time horizons. For example, the 1-day 
-return is the return made if the stock was bought today and sold the next day. Returns a 
-dataframe.
+The edgar_sentiment_wordcount module is used read in a folder of 10-k submissions that have been cleaned by the edgar_cleaner module, count the number of words in each document belonging to a particular sentiment and outputs the results to the output .csv file.
 
-### Part 3C - Reference Data: Loughran-McDonald Sentiment Words
----
-(Using NLP pre-processing and )
-Update the ref_data module. The module should contain the following added function: 
-- get_sentiment_word_dict()
-Returns a dictionary containing the LM sentiment words. The keys for the dictionary are the 
-sentiments, and the values will be a list of words associated with that particular sentiment. For 
-example, get_sentiment_word_dict()[‘Negative’] will return a list of words associated with 
-negative sentiment.
-
-
-
-### Part 4 - Sentiment Word Counts
----
-(Using feature extraction?)
-module called edgar_sentiment_wordcount. The module should contain the following 
-function: 
-- write_document_sentiments(input_folder, output_file)
-Takes all the clean text 10-k files in the input folder, counts the number of words in the 
-document belonging to a particular sentiment and outputs the results to the output file
+The code below for example will return a .csv file from the 10-k submission .txt files in the folder
+```
+import edgar_sentiment_wordcount as edgar_sentiment
+edgar_sentiment.write_document_sentiments('C:\\Documents\\testfolder\\inputfolder', 'C:\\Documents\\testfolder\\output.csv')
+```
 
 
 #### Part 5 - Sentiment Analysis

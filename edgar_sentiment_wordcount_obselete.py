@@ -5,7 +5,7 @@ import json
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 
-def write_documents_sentiment_wordcount(input_folder, output_file): #Main Function
+def write_documents_sentiment(input_folder, output_file): #Main Function
     def name_cleaner(filename): #Function for getting Symbol, ReportType, FilingDate
         filenamelist = filename.split('_')
         symbol = filenamelist[0]
