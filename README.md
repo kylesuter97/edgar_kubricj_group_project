@@ -80,10 +80,18 @@ print(ref_data.get_sp100())
  - **Part B - get_yahoo_data()**
 
 
+The `get_yahoo_data()` function can be used to
 
 - **Part C - get_sentiment_word_dict()**
 
-The `get_sentiment_word_dict()` function can be used 
+The `get_sentiment_word_dict()` function can be used to provide a dictionary for sentiment values: Postive, Negative, Uncertainty, Litigious, Constraining, Superfluous, Interesting, Modal.
+
+For example, the code below will print all the words associated with the "Negative" sentiment
+```
+import ref_data as edgar_data
+sentiment_dict = edgar_data.get_sentiment_word_dict()['Negative']
+print(sentiment_dict)
+```
 
 
 ### Sentiment Word Counting: edgar_sentiment_wordcount
