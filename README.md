@@ -80,7 +80,14 @@ print(ref_data.get_sp100())
  - **Part B - get_yahoo_data()**
 
 
-The `get_yahoo_data()` function can be used to
+The `get_yahoo_data()` function can be used to generate a pandas  Data Frame of the yahoo financials of a given ticker between the start date and end date inputted. Columns consists of high, low, price, volume, different time spans of returns.
+
+For example the below code can be used to generate a dataframe for AAPL between 2018-2020
+```
+import ref_data
+print(ref_data.get_yahoo_data('2018-01-10', '2020-01-01', 'AAPL'))
+```
+
 
 - **Part C - get_sentiment_word_dict()**
 
@@ -105,6 +112,7 @@ edgar_sentiment.write_document_sentiments('C:\\Documents\\testfolder\\inputfolde
 ```
 
 
-#### Part 5 - Sentiment Analysis
+#### Sentiment Data Analysis: sentiment_analysis
 ---
-(Using general NLP modelling?)
+
+The sentiment_analysis module is used to combine the sentiment wordcount dataframe with a yahoo financials dataframe to..
