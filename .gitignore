@@ -7,3 +7,9 @@ gitignored/
 #Test file
 testing.py
 edgar_sentiment_wordcount_obselete.py
+
+
+#Any .csv outputs
+*.csv
+
+*.png
