@@ -13,6 +13,8 @@ def analysis(sentiment_df, financials_df):
     #temp_data = pd.read_csv('fulloutput.csv')
     temp_data = sentiment_df
     sentiment_df = pd.DataFrame(temp_data)
+    sentiment_df['FilingDate'] = pd.to_datetime(sentiment_df['FilingDate'])
+
 
     #stock_data = pd.read_csv('stock_returns_daily_2000_now.csv')
     stock_data = financials_df
@@ -21,7 +23,6 @@ def analysis(sentiment_df, financials_df):
     sentiment_df.isnull().sum()
     ref_data_df = ref_data_df.replace(np.nan, 0)
     sentiment_df = sentiment_df.replace(np.nan, 0)
-
 
     TEST_DF = pd.merge(ref_data_df, sentiment_df, how='inner', left_on=['symbol','date']
                     , right_on=['Symbol','FilingDate'])
