@@ -5,7 +5,7 @@ from nltk import word_tokenize
 from nltk.corpus import stopwords
 import ref_data as edgar_data
 
-def write_documents_sentiments(input_folder, output_file, sentiment_dict): #Main Function
+def write_documents_sentiments(input_folder, output_file): #Main Function
     def name_cleaner(filename): #Function for getting Symbol, ReportType, FilingDate
         filenamelist = filename.split('_') #Split file name by _
         symbol = filenamelist[0]
@@ -100,11 +100,11 @@ def write_documents_sentiments(input_folder, output_file, sentiment_dict): #Main
             print(f"Extracted data from {file}")
     #Create dataframe of all html files sentiment counts
     df = pd.DataFrame(lod, columns=columnheaders)
-
+    sentiment_df = df
     #Preview dataframe
     print(df)
 
     #Output to required folder
     os.chdir(input_folder)
     df.to_csv(output_file)
-
+    return sentiment_df
