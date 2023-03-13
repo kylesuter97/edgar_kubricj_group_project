@@ -17,7 +17,7 @@ The pipeline is split into 5 modules:
 
 - Sentiment Word Counting - "edgar_sentiment_wordcount"
 
-- Sentiment Analysis
+- Sentiment Data Analysis - "sentiment_analysis"
 
 ### Installation
 Ensure correct packages are installed using the requirement.txt file as below
