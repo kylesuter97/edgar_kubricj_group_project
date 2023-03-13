@@ -69,7 +69,7 @@ def download_files_10k(ticker, dest_folder):
 
     #Send the keystroke for requested 'ticker' followed by enter key to searchbox
     driver.find_element("xpath", xpath_search_box).send_keys(ticker, Keys.ENTER)
-    time.sleep(1 #Sleep to allow it to run
+    time.sleep(1) #Sleep to allow it to run
 
     #Now we need to click on "10-K (annual reports)..." to expand collapsible
     xpath_10k_expand = r'//*[@id="filingsStart"]/div[2]/div[3]/h5'
