@@ -115,4 +115,6 @@ edgar_sentiment.write_document_sentiments('C:\\Documents\\testfolder\\inputfolde
 #### Sentiment Data Analysis: sentiment_analysis
 ---
 
-The sentiment_analysis module is used to combine the sentiment wordcount dataframe with a yahoo financials dataframe to..
+The sentiment_analysis module takes in tables created through sentiment extraction and reference data acquisition and merges them into one table before performing regression analyses and producing relevant graphs.
+
+Currently can only be run as part of whole pipeline as in `run_pipeline.py` - will be updated to also run with pre-made sentiment + reference .csv files.
