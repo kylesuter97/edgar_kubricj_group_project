@@ -31,6 +31,6 @@ def main(list_of_tickers, input_folder, output_folder, output_file, start_date, 
     sentiment_analysis.analysis(sentiment_df, financials_df)
 
 #tickers = edgar_data.get_sp100()
-tickers = ['META']
+tickers = ['META', 'T']
 main(tickers, 'C:\\NotOneDrive\\Edgar\\test_dir\\input_files', 'C:\\NotOneDrive\\Edgar\\test_dir\\output_files', 
      'C:\\NotOneDrive\\Edgar\\test_dir\\output3m.csv', '2018-01-01', '2023-01-01')

@@ -9,7 +9,7 @@ def write_page(url, file_path):
 
     #Load EDGAR website
     driver.get(url)
-    time.sleep(1)#Sleep to allow it to run
+    time.sleep(2)#Sleep to allow it to run
 
     #get filing date for later
     xpath_filing_date = r'//*[@id="formDiv"]/div[2]/div[1]/div[2]'
@@ -19,7 +19,7 @@ def write_page(url, file_path):
     #Link to html file
     xpath_ixbrl = r'//*[@id="formDiv"]/div/table/tbody/tr[2]/td[3]/a'
     driver.find_element("xpath", xpath_ixbrl).click()
-    time.sleep(1)
+    time.sleep(2)
 
     #If HTML+CSS, proceed to "Open as HTML", otherwise assume already HTML
     try:
@@ -32,7 +32,7 @@ def write_page(url, file_path):
         driver.switch_to.window(driver.window_handles[1])
     except Exception:
         pass
-    time.sleep(3)
+    time.sleep(2)
     #create output file path
     tempfile_name = "thistempfile.html"
 
@@ -62,30 +62,30 @@ def download_files_10k(ticker, dest_folder):
 
     #Load EDGAR website
     driver.get(r'https://www.sec.gov/edgar/searchedgar/companysearch')
-    time.sleep(1)#Sleep to allow it to run
+    time.sleep(2)#Sleep to allow it to run
 
     #Xpath to search box on edgar
     xpath_search_box = r'//*[@id="edgar-company-person"]'
 
     #Send the keystroke for requested 'ticker' followed by enter key to searchbox
     driver.find_element("xpath", xpath_search_box).send_keys(ticker, Keys.ENTER)
-    time.sleep(1) #Sleep to allow it to run
+    time.sleep(2) #Sleep to allow it to run
 
     #Now we need to click on "10-K (annual reports)..." to expand collapsible
     xpath_10k_expand = r'//*[@id="filingsStart"]/div[2]/div[3]/h5'
     driver.find_element("xpath", xpath_10k_expand).click()
-    time.sleep(1) #Sleep to allow it to run
+    time.sleep(2) #Sleep to allow it to run
 
     #Now click on "View all 10-ks and 10-Qs"
     xpath_10k_all= r'//*[@id="filingsStart"]/div[2]/div[3]/div/button[1]'
     driver.find_element("xpath", xpath_10k_all).click()
-    time.sleep(1) #Sleep to allow it to run
+    time.sleep(2) #Sleep to allow it to run
 
     #Enter "10-k" in search box and then end
     #Send the keystroke for requested 'ticker' followed by enter key to searchbox
     xpath_filings = r'//*[@id="searchbox"]'
     driver.find_element("xpath", xpath_filings).send_keys("10-k", Keys.ENTER)
-    time.sleep(1) #Sleep to allow it to run
+    time.sleep(2) #Sleep to allow it to run
 
     #Deletes any previously downloaded edgar files that might crash the script
     try:
@@ -96,7 +96,7 @@ def download_files_10k(ticker, dest_folder):
     #Downloads  excel to get links to all filings
     xpath_filings_excelbutton = r'//*[@id="filingsTable_wrapper"]/div[1]/button[3]'
     driver.find_element("xpath", xpath_filings_excelbutton).click()
-    time.sleep(1) #Sleep to allow it to run
+    time.sleep(2) #Sleep to allow it to run
 
     #Closes driver
     driver.close()
