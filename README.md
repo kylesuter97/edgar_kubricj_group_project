@@ -22,7 +22,7 @@ The pipeline is split into 5 modules:
 ### Installation
 Ensure correct packages are installed using the requirement.txt file as below
 ```
-pip install requirements.txt -r
+pip install -r requirements.txt
 ```
 ### Usage
 
