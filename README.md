@@ -5,9 +5,9 @@
 
 This repository has been developed as part of team Battersea Power Station's submission for the Edgar project.
 
-This pipeline scrapes, cleans and analyzes S&P100 10-k submissions from the U.S. Securities and Exchange Commission's EDGAR Company filings.
+This package constrains a pipeline that scrapes, cleans and analyzes S&P100 10-k submissions from the U.S. Securities and Exchange Commission's EDGAR Company filings.
 
-The pipeline is split into 5 modules:
+The package is split into 5 modules:
 
 - Data Ingestion - "edgar_downloader"
 
@@ -35,7 +35,7 @@ e.g. `'C:\Documents\testfolder\subfolder'` must be replaced with `'C:\\Documents
 
 
 
-## Pipeline Modules:
+## Package Modules:
 ### Data Ingestion: edgar_downloader
 ---
 
