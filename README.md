@@ -1,9 +1,9 @@
-# Edgar-BPS
+# Stock Data Analysis
 
 
 ## Getting started
 
-This repository has been developed as part of team Battersea Power Station's submission for the Edgar project.
+This repository has been developed as part of a sprint team during my data engineering course.
 
 This package constrains a pipeline that scrapes, cleans and analyzes S&P100 10-k submissions from the U.S. Securities and Exchange Commission's EDGAR Company filings.
 
